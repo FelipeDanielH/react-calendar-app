@@ -1,2 +1,2 @@
 # CalendarApp
-Aplicacion del cuerso de REact de Fernando Herrera
+Aplicacion del curso de React de Fernando Herrera
