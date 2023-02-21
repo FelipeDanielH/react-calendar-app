@@ -1,4 +1,4 @@
-import { addHours } from 'date-fns';
+import { addHours, differenceInSeconds } from 'date-fns';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import DatePicker, {registerLocale} from "react-datepicker";
@@ -54,6 +54,26 @@ export const CalendarModal = () => {
     })
   }
 
+  const onFormSubmit = ( event ) => {
+    event.preventDefault();
+
+    const difference = differenceInSeconds( formValues.end, formValues.start );
+
+    if( isNaN(difference) || difference <= 0){
+      console.log('Error en fechas');
+      return;
+    }
+
+    if ( formValues.title.length <= 0 ) return;
+
+    console.log(formValues);
+
+    //TODO
+    // cerrar modal
+    // Remover errores en pantalla
+
+
+  }
 
   return (
     <Modal
@@ -68,7 +88,7 @@ export const CalendarModal = () => {
 
       <hr />
 
-      <form className="container">
+      <form className="container" onSubmit={ onFormSubmit }>
 
         <div className="row">
           <div className="form-group mb-2 col-md-6">
