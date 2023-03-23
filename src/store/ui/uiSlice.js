@@ -6,10 +6,13 @@ export const uiSlice = createSlice({
         isDateModalOpen: false
     },
     reducers: {
-        increment: (state, /* action */) => {
-            state.counter += 1;
+        onOpenDateModal: (state, actions) => {
+            state.isDateModalOpen = true;
         },
+        onCloseDateModal: (state, actions) => {
+            state.isDateModalOpen = false;
+        }
     }
 });
 
-export const { increment } = uiSlice.actions;
+export const { isDateModalOpen, onCloseDateModal, onOpenDateModal } = uiSlice.actions;
