@@ -49,3 +49,14 @@
   position: fixed;
   right: 25px;
 }
+
+.fab-delete {
+  border-radius: 100%;
+  bottom: 25px;
+  font-size: 22px;
+  padding: 10px;
+  position: fixed;
+  left: 25px;
+  width: 70px;
+  height: 70px;
+}
