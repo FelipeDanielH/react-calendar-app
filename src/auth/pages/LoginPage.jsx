@@ -17,43 +17,45 @@ const registerFormFields = {
 }
 
 export const LoginPage = () => {
+  const { startLogin, startRegister, errorMessage } = useAuthStore();
 
-  const { startLogin, errorMessage } = useAuthStore();
+  const { loginEmail, loginPassword, onInputChange: onLoginInputChange, } = useForm(loginFormFields);
+  const { registerName, registerEmail, registerPassword, registerPassword2, onInputChange: onRegisterInputChange, } = useForm(registerFormFields);
 
-  const { loginEmail, loginPassword, onInputChange:onLoginInputChange, } = useForm(loginFormFields);
-  const { registerName, registerEmail, registerPassword, registerPassword2, onInputChange:onRegisterInputChange, } = useForm(registerFormFields);
-
-  const loginSubmit = ( event ) => {
+  const loginSubmit = (event) => {
     event.preventDefault();
-    startLogin({ email:loginEmail, password:loginPassword });
-    
+    startLogin({ email: loginEmail, password: loginPassword });
   }
 
   const registerSubmit = (event) => {
     event.preventDefault();
-    console.log({ registerName, registerEmail, registerPassword, registerPassword2})
+    if( registerPassword !== registerPassword2){
+      Swal.fire( 'Error en el registro', 'Contraseñas no son iguales', 'error' );
+      return
+    }
+    startRegister({ name:registerName, email:registerEmail, password:registerPassword });
   }
 
-useEffect( () => {
-  if (errorMessage !== undefined) {
-    Swal.fire('Error en la uatenticacion', errorMessage, 'error');
-  }
-}, [errorMessage])  
+  useEffect(() => {
+    if (errorMessage !== undefined) {
+      Swal.fire('Error en la autenticacion', errorMessage, 'error');
+    }
+  }, [errorMessage]);
 
   return (
     <div className="container login-container">
       <div className="row">
         <div className="col-md-6 login-form-1">
           <h3>Ingreso</h3>
-          <form onSubmit={ loginSubmit }>
+          <form onSubmit={loginSubmit}>
             <div className="form-group mb-2">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Correo"
                 name="loginEmail"
-                value={ loginEmail }
-                onChange={ onLoginInputChange }
+                value={loginEmail}
+                onChange={onLoginInputChange}
               />
             </div>
             <div className="form-group mb-2">
@@ -62,8 +64,8 @@ useEffect( () => {
                 className="form-control"
                 placeholder="Contraseña"
                 name="loginPassword"
-                value={ loginPassword }
-                onChange={ onLoginInputChange }
+                value={loginPassword}
+                onChange={onLoginInputChange}
               />
             </div>
             <div className="form-group mb-2 centered">
@@ -78,15 +80,15 @@ useEffect( () => {
 
         <div className="col-md-6 login-form-2">
           <h3>Registro</h3>
-          <form onSubmit={ registerSubmit }>
+          <form onSubmit={registerSubmit}>
             <div className="form-group mb-2">
               <input
                 type="text"
                 className="form-control"
                 placeholder="Nombre"
                 name="registerName"
-                value={ registerName }
-                onChange={ onRegisterInputChange }
+                value={registerName}
+                onChange={onRegisterInputChange}
               />
             </div>
             <div className="form-group mb-2">
@@ -95,8 +97,8 @@ useEffect( () => {
                 className="form-control"
                 placeholder="Correo"
                 name="registerEmail"
-                value={ registerEmail }
-                onChange={ onRegisterInputChange }
+                value={registerEmail}
+                onChange={onRegisterInputChange}
               />
             </div>
             <div className="form-group mb-2">
@@ -105,8 +107,8 @@ useEffect( () => {
                 className="form-control"
                 placeholder="Contraseña"
                 name="registerPassword"
-                value={ registerPassword }
-                onChange={ onRegisterInputChange }
+                value={registerPassword}
+                onChange={onRegisterInputChange}
               />
             </div>
 
@@ -116,8 +118,8 @@ useEffect( () => {
                 className="form-control"
                 placeholder="Repita la contraseña"
                 name="registerPassword2"
-                value={ registerPassword2 }
-                onChange={ onRegisterInputChange }
+                value={registerPassword2}
+                onChange={onRegisterInputChange}
               />
             </div>
 
