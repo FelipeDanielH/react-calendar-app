@@ -8,11 +8,11 @@ export const AppRouter = () => {
 
   const { status, checkAuthToken } = useAuthStore();
 
-  useEffect( () => {
+  useEffect(() => {
     checkAuthToken();
-  },[])
+  }, [])
 
-  if( status === 'checking' ){
+  if (status === 'checking') {
     return (
       <h3>Cargando...</h3>
     )
@@ -21,11 +21,20 @@ export const AppRouter = () => {
   return (
     <Routes>
       {
-        ( status === 'not-authenticated' )
-        ? <Route path="/auth/*" element={ <LoginPage /> } />
-        : <Route path="/*" element={ <CalendarPage /> } />
-      } 
-      <Route path="/*" element={<Navigate to="/auth/login"/>} />
+        (status === 'not-authenticated')
+          ? (
+            <>
+              <Route path="/auth/*" element={<LoginPage />} />
+              <Route path="/*" element={<Navigate to="/auth/login" />} />
+            </>
+          )
+          : (
+            <>
+              <Route path="/" element={<CalendarPage />} />
+              <Route path="/*" element={<Navigate to="/" />} />
+            </>
+          )
+      }
     </Routes>
   )
 }
