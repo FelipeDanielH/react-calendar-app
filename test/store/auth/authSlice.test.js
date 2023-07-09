@@ -45,7 +45,5 @@ describe('Pruebas sobre authSlice', () => {
             user: {},
             errorMessage: undefined,
         });
-
-
     });
 });
