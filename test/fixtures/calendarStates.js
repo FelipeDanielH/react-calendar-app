@@ -1,6 +1,6 @@
 export const events = [
     {
-        id: 1,
+        id: '1',
         title: 'Cumple',
         notes: 'Hay que comprar tortita',
         start: new Date('2022-10-21 13:00:00'),
@@ -8,7 +8,7 @@ export const events = [
         notes: 'Nota 1'
     },
     {
-        id: 1,
+        id: '2',
         title: 'Cumple de felipe',
         notes: 'Hay que comprar tortita tambien',
         start: new Date('2022-11-09 13:00:00'),
