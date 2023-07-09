@@ -19,18 +19,18 @@ export const events = [
 
 export const initialState = {
     isLoadingEvents: true,
-        events: [...events],
-        activeEvent: null
-} 
+    events: [],
+    activeEvent: null
+}
 
 export const calendarWithEventsState = {
     isLoadingEvents: false,
-    events: [ ...events ],
+    events: [...events],
     activeEvent: null
 }
 
 export const calendarWithActiveEventsState = {
     isLoadingEvents: false,
-    events: [ ...events ],
+    events: [...events],
     activeEvent: { ...events[0] }
 }
