@@ -13,7 +13,7 @@ export const authenticatedState = {
     errorMessage: undefined,
 }
 
-export const notAutheticatedState = {
+export const notAuthenticatedState = {
     status: 'not-authenticated', // 'authenticated', 'not-authenticated'
     user: {},
     errorMessage: undefined,
