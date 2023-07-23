@@ -29,7 +29,9 @@ const customStyles = {
   }
 };
 
-Modal.setAppElement('#root');
+if( getEnvVariables().VITE_MODE !== 'test' ){
+  Modal.setAppElement('#root');
+}
 
 export const CalendarModal = () => {
 
