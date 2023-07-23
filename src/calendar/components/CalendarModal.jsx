@@ -12,6 +12,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import es from 'date-fns/locale/es';
 import { useUiStore } from '../../hooks/useUiStore';
 import { useCalendarStore } from '../../hooks';
+import { getEnvVariables } from '../../helpers';
 
 registerLocale('es', es);
 
